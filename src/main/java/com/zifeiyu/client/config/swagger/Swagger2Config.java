@@ -1,4 +1,4 @@
-package com.zifeiyu.client.config;
+package com.zifeiyu.client.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zifeiyu.client.dao.ShopsDao">
+    <resultMap id="BaseResultMap" type="com.zifeiyu.client.model.DO.ShopsDO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="cover_img_url" jdbcType="VARCHAR" property="coverImgUrl" />
+        <result column="price_id" jdbcType="INTEGER" property="priceId" />
+        <result column="tips_id" jdbcType="INTEGER" property="tipsId" />
+        <result column="page_id" jdbcType="INTEGER" property="pageId" />
+        <result column="service" jdbcType="INTEGER" property="service" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, cover_img_url, price_id, tips_id, page_id, service
+    </sql>
+    <select id="listShopSnapshots" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from zifeiyu.t_shops
+    </select>
+</mapper>

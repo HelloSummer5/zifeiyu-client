@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Configuration>
+    <Appenders>
+        <Console name="Console">
+            <PatternLayout pattern="%d %-5p [%c] %m%n"/>
+        </Console>
+
+        <RollingRandomAccessFile name="RollingRandomAccessFile"
+                                 immediateFlush="true"
+                                 fileName="./logs/zifeiyu-client/zifeiyu-client.log"
+                                 filePattern="./logs/zifeiyu-client/zifeiyu-client.%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d %-5p [%c] %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="500 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+
+    </Appenders>
+
+    <!--log4j.logger.org.mybatis.example=DEBUG-->
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingRandomAccessFile"/>
+        </Root>
+        <!-- druid配置 打印执行SQL -->
+        <logger name="druid.sql.Statement" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+        <!-- 输出查询结果集 -->
+        <!--<logger name="druid.sql.ResultSet" level="debug" additivity="false">-->
+            <!--<appender-ref ref="Console"/>-->
+        <!--</logger>-->
+        <logger name="org.springframework.scheduling" level="INFO" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+    </Loggers>
+</Configuration>
