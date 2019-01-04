@@ -12,10 +12,10 @@ public class ShopsSnapshotVO {
 
     private String name;
 
-    private String coverImg;
+    private String coverImgUrl;
 
-    private Double price;
+    private Double priceId;
 
-    private String tips;
+    private Integer tipsId;
 
 }

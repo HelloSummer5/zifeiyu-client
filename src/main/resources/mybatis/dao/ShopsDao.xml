@@ -3,6 +3,7 @@
 <mapper namespace="com.zifeiyu.client.dao.ShopsDao">
     <resultMap id="BaseResultMap" type="com.zifeiyu.client.model.DO.ShopsDO">
         <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="sid" jdbcType="VARCHAR" property="sid" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="cover_img_url" jdbcType="VARCHAR" property="coverImgUrl" />
         <result column="price_id" jdbcType="INTEGER" property="priceId" />
@@ -11,7 +12,7 @@
         <result column="service" jdbcType="INTEGER" property="service" />
     </resultMap>
     <sql id="Base_Column_List">
-    id, name, cover_img_url, price_id, tips_id, page_id, service
+    id, sid, name, cover_img_url, price_id, tips_id, page_id, service
     </sql>
     <select id="listShopSnapshots" resultMap="BaseResultMap" >
         select
