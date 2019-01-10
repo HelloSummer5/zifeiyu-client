@@ -1,4 +1,4 @@
-package com.zifeiyu.client;
+package com.zifeiyu;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

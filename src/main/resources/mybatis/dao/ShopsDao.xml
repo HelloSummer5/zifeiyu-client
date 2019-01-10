@@ -7,16 +7,19 @@
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="cover_img_url" jdbcType="VARCHAR" property="coverImgUrl" />
         <result column="price_id" jdbcType="INTEGER" property="priceId" />
+        <result column="price" jdbcType="DOUBLE" property="price" />
         <result column="tips_id" jdbcType="INTEGER" property="tipsId" />
         <result column="page_id" jdbcType="INTEGER" property="pageId" />
         <result column="service" jdbcType="INTEGER" property="service" />
     </resultMap>
     <sql id="Base_Column_List">
-    id, sid, name, cover_img_url, price_id, tips_id, page_id, service
+    s.id, s.sid, s.name, s.cover_img_url, s.price_id, s.tips_id, s.page_id, s.service, p.name as price
     </sql>
     <select id="listShopSnapshots" resultMap="BaseResultMap" >
         select
         <include refid="Base_Column_List" />
-        from zifeiyu.t_shops
+        from t_shops s
+        INNER JOIN t_price p
+        on s.price_id = p.id
     </select>
 </mapper>

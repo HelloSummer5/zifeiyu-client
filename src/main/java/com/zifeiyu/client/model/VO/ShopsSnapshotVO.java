@@ -14,7 +14,9 @@ public class ShopsSnapshotVO {
 
     private String coverImgUrl;
 
-    private Double priceId;
+    private Integer priceId;
+
+    private Double price;
 
     private Integer tipsId;
 

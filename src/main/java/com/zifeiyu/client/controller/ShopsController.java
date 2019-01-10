@@ -3,12 +3,14 @@ package com.zifeiyu.client.controller;
 import com.zifeiyu.client.common.response.ResultBean;
 import com.zifeiyu.client.facade.ShopsFacade;
 import com.zifeiyu.client.service.ShopsService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(description = "网页商品相关接口")
 @RestController
 @RequestMapping("client/shops")
 public class ShopsController {

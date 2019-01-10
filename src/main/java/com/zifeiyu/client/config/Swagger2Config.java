@@ -1,4 +1,4 @@
-package com.zifeiyu.client.config.swagger;
+package com.zifeiyu.client.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class Swagger2Config {
                 // 页面标题
                 .title("子非鱼接口文档")
                 // 描述
-                .description("子非鱼首页配置文档")
+                .description("客户端文档")
                 //服务条款网址
                 .termsOfServiceUrl("https://blog.csdn.net/ysk_xh_521")
                 .version("1.0")

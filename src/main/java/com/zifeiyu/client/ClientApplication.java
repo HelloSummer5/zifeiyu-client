@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
-@SpringBootApplication
-@MapperScan("com.zifeiyu.client.dao")
+@SpringBootApplication(scanBasePackages = "com.zifeiyu")
+@MapperScan({"com.zifeiyu.client.dao"})
 public class ClientApplication {
 
     public static void main(String[] args) {
