@@ -20,4 +20,6 @@ public class ShopsSnapshotVO {
 
     private Integer tipsId;
 
+    private Integer pageId;
+
 }

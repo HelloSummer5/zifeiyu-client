@@ -23,14 +23,14 @@ public class ShopsController {
 
     @ApiOperation("获取网页列表")
     @GetMapping("list")
-    public ResultBean listShops(PageQueryBean pageQueryBean, ShopsQueryDTO shopsQueryDTO){
-        return shopsFacade.listShopSnapshots(pageQueryBean, shopsQueryDTO);
+    public ResultBean listShops(@RequestBody ShopsQueryDTO shopsQueryDTO){
+        return shopsFacade.listShopSnapshots(shopsQueryDTO);
     }
-
-    @ApiOperation("test")
-    @GetMapping("test")
-    public String testListShops(){
-        return shopsService.listShopSnapshots().toString();
-    }
+//
+//    @ApiOperation("test")
+//    @GetMapping("test")
+//    public String testListShops(){
+//        return shopsService.listShopSnapshots().toString();
+//    }
 
 }

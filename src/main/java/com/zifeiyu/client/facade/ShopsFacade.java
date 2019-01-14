@@ -9,5 +9,5 @@ import com.zifeiyu.client.model.VO.ShopsSnapshotVO;
  * 数据转换
  */
 public interface ShopsFacade {
-    ResultBean<ShopsSnapshotVO> listShopSnapshots(PageQueryBean pageQueryBean, ShopsQueryDTO shopsQueryDTO);
+    ResultBean<ShopsSnapshotVO> listShopSnapshots(ShopsQueryDTO shopsQueryDTO);
 }

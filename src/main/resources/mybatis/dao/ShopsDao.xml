@@ -21,5 +21,15 @@
         from t_shops s
         INNER JOIN t_price p
         on s.price_id = p.id
+        <if test="tipsId != null">
+            and tips_id = #{tipsId}
+        </if>
+        <if test="priceId != null">
+            and price_id = #{priceId}
+        </if>
+        <if test="pageId != null">
+            and page_id = #{pageId}
+        </if>
+        and usable_flag = 1
     </select>
 </mapper>
