@@ -2,9 +2,13 @@ package com.zifeiyu.client.facade.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zifeiyu.client.common.response.ResultBean;
+import com.zifeiyu.client.common.utils.PageQueryBean;
 import com.zifeiyu.client.facade.ShopsFacade;
 import com.zifeiyu.client.model.DO.ShopsDO;
+import com.zifeiyu.client.model.DTO.ShopsQueryDTO;
 import com.zifeiyu.client.model.VO.ShopsSnapshotVO;
 import com.zifeiyu.client.service.ShopsService;
 import com.zifeiyu.common.service.ClassifyService;
@@ -12,6 +16,8 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +36,25 @@ public class ShopsFacadeImpl implements ShopsFacade {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Override
-    public ResultBean listShopSnapshots() {
+    public ResultBean listShopSnapshots(PageQueryBean pageQueryBean, ShopsQueryDTO shopsQuery) {
         ResultBean result = new ResultBean();
         ObjectNode res = OBJECT_MAPPER.createObjectNode();
         // 分页
-        // 商品列表
+        PageHelper.startPage(pageQueryBean.getPageNum(), pageQueryBean.getPageSize());
         List<ShopsDO> shopsDOList = shopsService.listShopSnapshots();
+        PageInfo pageInfo = new PageInfo(shopsDOList, pageQueryBean.getPageSize());
+        // 数据转换
         List<ShopsSnapshotVO> shopsSnapshotList = new ArrayList<>();
         for (ShopsDO shopDO : shopsDOList) {
             ShopsSnapshotVO snapshot = mapper.map(shopDO, ShopsSnapshotVO.class);
             shopsSnapshotList.add(snapshot);
         }
-        // 商品列表
+        // 返回数据
         res.putPOJO("shops", shopsSnapshotList);
-        // 分类列表
+        res.putPOJO("total", pageInfo.getTotal());
+        res.putPOJO("pages", pageInfo.getPages());
+        res.putPOJO("pageSize", pageInfo.getPageSize());
+        res.putPOJO("pageNum", pageInfo.getPageNum());
         result.setData(res);
         return result;
     }

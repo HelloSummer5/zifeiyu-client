@@ -1,14 +1,14 @@
 package com.zifeiyu.client.controller;
 
 import com.zifeiyu.client.common.response.ResultBean;
+import com.zifeiyu.client.common.utils.PageQueryBean;
 import com.zifeiyu.client.facade.ShopsFacade;
+import com.zifeiyu.client.model.DTO.ShopsQueryDTO;
 import com.zifeiyu.client.service.ShopsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Api(description = "网页商品相关接口")
 @RestController
@@ -23,8 +23,8 @@ public class ShopsController {
 
     @ApiOperation("获取网页列表")
     @GetMapping("list")
-    public ResultBean listShops(){
-        return shopsFacade.listShopSnapshots();
+    public ResultBean listShops(PageQueryBean pageQueryBean, ShopsQueryDTO shopsQueryDTO){
+        return shopsFacade.listShopSnapshots(pageQueryBean, shopsQueryDTO);
     }
 
     @ApiOperation("test")
