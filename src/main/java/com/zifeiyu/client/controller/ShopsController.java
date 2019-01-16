@@ -22,7 +22,7 @@ public class ShopsController {
     private ShopsService shopsService;
 
     @ApiOperation("获取网页列表")
-    @GetMapping("list")
+    @PostMapping("list")
     public ResultBean listShops(@RequestBody ShopsQueryDTO shopsQueryDTO){
         return shopsFacade.listShopSnapshots(shopsQueryDTO);
     }
